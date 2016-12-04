@@ -1,3 +1,13 @@
+<!-- NEEDED FUNCTIONS:
+	LOGIN
+		check if username exists
+			yes -> check if password is correct
+		Log in -> redirect to home.html
+	SIGNUP
+		check username is not taken, check password and reenter password is the same
+		signup -> close modal
+-->
+
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="webStyle.css">
@@ -9,19 +19,21 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- google fonts -->
+	<link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Raleway">
 </head>
 <body>
 	<!-- LOG IN PAGE -->
 	<div class = "loginPage">
 		<div class="wrapper">
-			<header> <font color = "white"> Split Web App </font></header> <br>
+			<header> <font color = "white"> Split Web App </font></header> <br><br><br><br><br>
 			<main>	<center> <b>Finance Your Expenses With Your Friends </b><br>
-							<font size="4">Track where you're spending all your money. Pay and get your money back from friends. Keep your wallet fat. </font> <br><br>
-							Ready, Set, Finance <br> <br>
-								<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" id="login">Log in</button> 
-								<font size="2">or</font>
-								<button type="button" class="btn btn-info btn-lg" data-dismiss="modal" id="signup">Sign up</button>
-					</center>
+				<font size="5">Track where you're spending all your money. Pay and get your money back from friends. Keep your wallet fat. </font> <br><br>
+				Ready, Set, Finance <br> <br>
+					<button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" id="login">Log in</button> 
+					<font size="2">or</font>
+					<button type="button" class="btn btn-info btn-lg" data-dismiss="modal" id="signup">Sign up</button></center>
 			</main>
 		</div> <!-- /.wrapper -->
 
@@ -37,10 +49,10 @@
 					</div> <!-- /.modal-header -->
 					<div class= "modal-body">
 						<label><b>Username</b></label><br>
-						<input type="text" placeholder="Enter Username" id="uname" style="width: 400px;" name="uname" required><br><br>
+						<input class="form-control" type="text" placeholder="Enter Username" id="uname" style="width: 400px;" name="uname" required><br><br>
 
 						<label><b>Password</b></label><br>
-  						<input type="password" placeholder="Enter Password" id="psw" style="width: 400px;" name="psw" required>
+  						<input class="form-control" type="password" placeholder="Enter Password" id="psw" style="width: 400px;" name="psw" required>
   						<br><br>
   						<button type="button" class="btn btn-success btn-block" data-dismiss="modal" id="loginOK">Log in</button>
 
@@ -63,16 +75,16 @@
 					</div> <!-- /.modal-header -->
 					<div class= "modal-body">
 						<label><b>Your Name</b></label><br>
-						<input type="text" placeholder="Enter Name" id="name" style="width: 400px;" name="name" required><br><br>
+						<input class="form-control" type="text" placeholder="Enter Name" id="name" style="width: 400px;" name="name" required><br><br>
 
 						<label><b>Username</b></label><br>
-						<input type="text" placeholder="Enter Username" id="uname" style="width: 400px;" name="uname" required><br><br>
+						<input class="form-control" type="text" placeholder="Enter Username" id="uname" style="width: 400px;" name="uname" required><br><br>
 
 						<label><b>Password</b></label><br>
-  						<input type="password" placeholder="Enter Password" id="psw" style="width: 400px;" name="psw" required> <br><br>
+  						<input class="form-control" type="password" placeholder="Enter Password" id="psw" style="width: 400px;" name="psw" required> <br><br>
 
   						<label><b>Re-enter Password</b></label><br>
-  						<input type="password" placeholder="Re-enter Password" id="psw2" style="width: 400px;" name="psw2" required>
+  						<input class="form-control" type="password" placeholder="Re-enter Password" id="psw2" style="width: 400px;" name="psw2" required>
 
 					</div> <!-- /.modal-body -->
 					<div class = "modal-footer">
