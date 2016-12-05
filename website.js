@@ -10,6 +10,18 @@ $('#add').click(function() {
     $('#' + $(this).prop('id') + 'Modal').modal({show:true, backdrop:'static', keyboard:false});
 });
 
+$('#addExpense').click(function() {
+    $('#' + $(this).prop('id') + 'Modal').modal({show:true, backdrop:'static', keyboard:false});
+});
+
+$('#removeExpense').click(function() {
+    $('#' + $(this).prop('id') + 'Modal').modal({show:true, backdrop:'static', keyboard:false});
+});
+
+$('#editExpense').click(function() {
+    $('#' + $(this).prop('id') + 'Modal').modal({show:true, backdrop:'static', keyboard:false});
+});
+
 $(document).on('click', '.btn-add', function(e) {
         e.preventDefault();
 
