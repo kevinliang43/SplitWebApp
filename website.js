@@ -10,8 +10,7 @@ $('#add').click(function() {
     $('#' + $(this).prop('id') + 'Modal').modal({show:true, backdrop:'static', keyboard:false});
 });
 
-$(document).on('click', '.btn-add', function(e)
-    {
+$(document).on('click', '.btn-add', function(e) {
         e.preventDefault();
 
         var controlForm = $('.controls form:first'),
@@ -30,4 +29,17 @@ $(document).on('click', '.btn-add', function(e)
 		e.preventDefault();
 		return false;
 	});
+
+function showHome() {
+	document.getElementById('homeDisplay').style.display = "block";
+	document.getElementById('igroupDisplay').style.display = "none";
+}
+
+function showigroup() {
+	document.getElementById('igroupDisplay').style.display = "block";
+	document.getElementById('homeDisplay').style.display = "none";
+}
+
+
+
 
