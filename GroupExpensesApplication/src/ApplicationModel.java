@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Created by KevinLiang on 12/3/16.
@@ -110,7 +111,42 @@ public class ApplicationModel {
     return connection;
   }
 
+  // get all table names
+
+  public ArrayList<String> getTableNames() {
+
+    ArrayList<String> tableNames = new ArrayList<String>(5);
+
+    try {
+      Statement statement = this.connection.createStatement();
+      ResultSet resultSet = statement.executeQuery(
+              "SELECT TABLE_NAME " +
+              "FROM information_schema.tables " +
+              "WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA = 'GroupExpensesApplication';");
+
+      while (resultSet.next()) {
+        tableNames.add(resultSet.getString("TABLE_NAME"));
+      }
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+    return tableNames;
+
+  }
+
+  // check if table exists
+//  public boolean containsTable(String tableName) {
+//
+//
+//
+//
+//
+//  }
+
   // add account (cannot add if account already exists, autoincrement shouldnt be problem)
+
+  //public void addAccount(String firstName, String lastName, )
 
   // add group (cannot add if group already exists)
 
