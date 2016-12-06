@@ -111,8 +111,11 @@ public class ApplicationModel {
     return connection;
   }
 
-  // get all table names
 
+  /**
+   * returns a list of all table names in this database.
+   * @return an ArrayList of Strings of the table names.
+   */
   public ArrayList<String> getTableNames() {
 
     ArrayList<String> tableNames = new ArrayList<String>(5);
@@ -130,23 +133,22 @@ public class ApplicationModel {
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }
-
     return tableNames;
 
   }
 
-  // check if table exists
-//  public boolean containsTable(String tableName) {
-//
-//
-//
-//
-//
-//  }
+  /**
+   * checks if the given string matches a table within the database.
+   * @param tableName represents the table name being checked.
+   * @return a boolean representing whether or not the table exists.
+   */
+  public boolean containsTable(String tableName) {
+    return this.getTableNames().contains(tableName);
+  }
 
   // add account (cannot add if account already exists, autoincrement shouldnt be problem)
 
-  //public void addAccount(String firstName, String lastName, )
+  // public void addAccount(String firstName, String lastName, )
 
   // add group (cannot add if group already exists)
 
