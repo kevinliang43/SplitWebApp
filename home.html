@@ -47,7 +47,7 @@ read: done
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="webStyle.css">
-	<title> Split Web App </title>
+	<title> Group Expense Web App </title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -64,8 +64,9 @@ read: done
 	<!--  HOME PAGE -->
 	<div id = "homePage">
 		<div class="wrapper">
-			<header> <font color = "white"> Split Web App </font>
+			<header> <font color = "white"> Group Expense Web App </font>
 					<button type="button" class="btn btn-primary" data-dismiss="modal" id="logout">Log out</button> 
+					<button type="button" class="btn btn-success" id="editInfo">Edit Password</button> 
 			</header> <br><br><br><br>
 
 			<main>	
@@ -126,7 +127,6 @@ read: done
 						GROUP NAME 
 						<button type="button" class="btn btn-warning" id="addExpense">Add Expense</button> 
 						<button type="button" class="btn btn-secondary" id="removeExpense">Remove Expense</button>
-						<button type="button" class="btn btn-success" id="editExpense">Edit Expense</button> 
 						<br> 
 						<font size="4">
 						Members in group: SOME LIST OF MEMBERS
@@ -153,7 +153,7 @@ read: done
 						<hr>
 						<div id="expenses">
 							<div id="expense1" data-toggle="collapse" data-target="#expense1collapse">
-							Expense1 <p align="right">You owe: $ SOME VALUE</p>
+							Expense1:SOME ID <p align="right">You owe: $ SOME VALUE</p>
 							</div>
 							<div id="expense1collapse" class = "collapse">
 								<font size="3">
@@ -246,7 +246,79 @@ read: done
 					<div class= "modal-body">
 						<label><b>Expense Name</b></label><br>
 						<input class="form-control" type="text" placeholder="Enter Expense Name" id="ename" style="width: 400px;" name="ename" required><br>
-						<label><b>Amount</b></label><br>
+						<label><b>Date</b></label><br>
+							  <div class="date">
+							  	<select name="Year" id="year">
+							    	<option value="2012">2018</option>
+							    	<option value="2012">2017</option>
+							      <option value="2011">2016</option>
+							      <option value="2010">2015</option>
+							      <option value="2009">2014</option>
+							      <option value="2008">2013</option>
+							      <option value="2012">2012</option>
+							      <option value="2011">2011</option>
+							      <option value="2010">2010</option>
+							      <option value="2009">2009</option>
+							      <option value="2008">2008</option>
+							      <option value="2007">2007</option>
+							      <option value="2006">2006</option>
+							      <option value="2005">2005</option>
+							      <option value="2004">2004</option>
+							      <option value="2003">2003</option>
+							      <option value="2002">2002</option>
+							      <option value="2001">2001</option>
+							      <option value="2000">2000</option>
+							    </select>
+							  	<select name="Month" id="month">
+							      <option value="01">January</option>
+							      <option value="02">February</option>
+							      <option value="03">March</option>
+							      <option value="04">April</option>
+							      <option value="05">May</option>
+							      <option value="06">June</option>
+							      <option value="07">July</option>
+							      <option value="08">August</option>
+							      <option value="09">September</option>
+							      <option value="10">October</option>
+							      <option value="11">November</option>
+							      <option value="12">December</option>
+							    </select>
+							    <select name="Day" id="day">
+							      <option value="01">01</option>
+							      <option value="02">02</option>
+							      <option value="03">03</option>
+							      <option value="04">04</option>
+							      <option value="05">05</option>
+							      <option value="06">06</option>
+							      <option value="07">07</option>
+							      <option value="08">08</option>
+							      <option value="09">09</option>
+							      <option value="10">10</option>
+							      <option value="11">11</option>
+							      <option value="12">12</option>
+							      <option value="13">13</option>
+							      <option value="14">14</option>
+							      <option value="15">15</option>
+							      <option value="16">16</option>
+							      <option value="17">17</option>
+							      <option value="18">18</option>
+							      <option value="19">19</option>
+							      <option value="20">20</option>
+							      <option value="21">21</option>
+							      <option value="22">22</option>
+							      <option value="23">23</option>
+							      <option value="24">24</option>
+							      <option value="25">25</option>
+							      <option value="26">26</option>
+							      <option value="27">27</option>
+							      <option value="28">28</option>
+							      <option value="29">29</option>
+							      <option value="30">30</option>
+							      <option value="31">31</option>
+							    </select>
+							  </div> <!-- /.date -->
+							  <br>
+					<label><b>Amount</b></label><br>
 						<input class="form-control" type="number" placeholder="Enter Amount" id="aname" style="width: 400px;" name="aname" required><br>
 						<label><b>Select Members Involved</b></label><br>
 						<label class="checkbox-inline"><input type="checkbox" value="member1">Name1</label>
@@ -285,7 +357,7 @@ read: done
 					</div> <!-- /.modal-header -->
 					<div class= "modal-body">
 						<label><b>Expense To Be Removed</b></label><br>
-						<input class="form-control" type="text" placeholder="Enter Expense Name" id="ername" style="width: 400px;" name="ername" required><br><br>
+						<input class="form-control" type="number" placeholder="Enter Expense ID" id="ername" style="width: 400px;" name="ername" required><br><br>
 					</div> <!-- /.modal-body -->
 					<div class = "modal-footer">
 						<button type="button" class="btn btn-success" data-dismiss="modal" id="remove">Remove</button>
@@ -295,64 +367,32 @@ read: done
 			</div> <!-- /.modal-dialog -->
 		</div> <!-- /.removeExpenseModal -->
 
-		<div id= "editExpenseModal" class="modal fade" tabindex="-1" role="dialog">
+		<div id= "editInfoModal" class="modal fade" tabindex="-1" role="dialog">
 	  		<div class="modal-dialog" role="document">
 	    		<div class="modal-content">
 	      			<div class="modal-header">
 	      				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<center>
-						<h1><b><font color = "white"> Edit Expense </font></b></h1>
+						<h1><b><font color = "white"> Edit Password </font></b></h1>
 						</center>
 					</div> <!-- /.modal-header -->
 					<div class= "modal-body">
-						<!-- EDIT -->
-						<!-- prefill values into boxes -->
-						<label><b>Expense That Needs To Be Edited</b></label><br>
-						<input class="form-control" type="text" placeholder="Enter Expense Name" id="eename" style="width: 400px;" name="eename" required><br>
-						<label><b>New Expense Name</b></label><br>
-						<input class="form-control" type="text" placeholder="Enter New Expense Name" id="nename" style="width: 400px;" name="nename" required><br>
-						<label><b>New Amount</b></label><br>
-						<input class="form-control" type="number" placeholder="Enter New Amount" id="naname" style="width: 400px;" name="naname" required><br>
-						<label><b>Select Members Involved</b></label><br>
-						<label class="checkbox-inline"><input type="checkbox" value="member1">Name1</label>
-						<label class="checkbox-inline"><input type="checkbox" value="member2">Name2</label>
-						<label class="checkbox-inline"><input type="checkbox" value="member3">Name3</label>
-						 <br><br>
-						<label><b>Split Equally?</b></label><br>
-						<label class="radio-inline"><input type="radio" name="optradio" id="yes">Yes</label>
-						<div id="expense1" data-toggle="collapse" data-target="#amountowedcollapse">
-						<label class="radio-inline"><input type="radio" name="optradio" id="no">No</label> 
-						</div>
-						<br><br>
-						<div id="amountowedcollapse" class = "collapse">
-						<label ><b>Amount Owed By Each</b></label><br>
-						<!-- list of name with text box, appear if no chosen --> 
-						Member1:&nbsp;<input class="form-control" type="number" placeholder="Enter Amount" id="member1amount" style="width: 400px;" name="member1amount" required><br><br>
-						</div>
-
+						<label><b>Old Password</b></label><br>
+						<input class="form-control" type="password" placeholder="Enter Password" id="oldp" style="width: 400px;" name="oldp" required><br><br>
+						<label><b>New Password</b></label><br>
+						<input class="form-control" type="password" placeholder="Enter New Password" id="newp" style="width: 400px;" name="oldp" required><br><br>
+						<label><b>Re-enter New Password</b></label><br>
+						<input class="form-control" type="password" placeholder="Enter New Password" id="newp2" style="width: 400px;" name="oldp" required><br><br>
 					</div> <!-- /.modal-body -->
 					<div class = "modal-footer">
-						<button type="button" class="btn btn-success" data-dismiss="modal" id="update">Update</button>
+						<button type="button" class="btn btn-success" data-dismiss="modal" id="remove">Update</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
 					</div> <!-- /.modal-footer -->
 				</div> <!-- /.modal-content -->
 			</div> <!-- /.modal-dialog -->
-		</div> <!-- /.editExpenseModal -->
+		</div> <!-- /.editInfoModal -->
+
 
 		<script src="website.js"></script>
 	</div> <!-- /.homePage -->
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

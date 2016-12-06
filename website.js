@@ -18,7 +18,7 @@ $('#removeExpense').click(function() {
     $('#' + $(this).prop('id') + 'Modal').modal({show:true, backdrop:'static', keyboard:false});
 });
 
-$('#editExpense').click(function() {
+$('#editInfo').click(function() {
     $('#' + $(this).prop('id') + 'Modal').modal({show:true, backdrop:'static', keyboard:false});
 });
 
@@ -51,7 +51,3 @@ function showigroup() {
 	document.getElementById('igroupDisplay').style.display = "block";
 	document.getElementById('homeDisplay').style.display = "none";
 }
-
-
-
-
