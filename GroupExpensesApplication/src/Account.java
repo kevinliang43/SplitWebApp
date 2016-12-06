@@ -83,11 +83,24 @@ public class Account {
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }
-
     return fieldNames;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Account account = (Account) o;
+
+    return accountID == account.accountID;
 
   }
 
+  @Override
+  public int hashCode() {
+    return accountID;
+  }
 }
 
 

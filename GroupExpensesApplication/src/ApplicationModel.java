@@ -10,7 +10,6 @@ import java.util.ArrayList;
  */
 
 
-
 public class ApplicationModel {
 
   private Account login;
@@ -48,11 +47,11 @@ public class ApplicationModel {
               "Cannot disconnect from database when no connection has been established. ");
     }
 
-      try {
-        connection.close();
-      } catch (SQLException e) {
-        System.out.println(e.getMessage());
-      }
+    try {
+      connection.close();
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
   }
 
   // Login
@@ -114,6 +113,7 @@ public class ApplicationModel {
 
   /**
    * returns a list of all table names in this database.
+   *
    * @return an ArrayList of Strings of the table names.
    */
   public ArrayList<String> getTableNames() {
@@ -124,8 +124,8 @@ public class ApplicationModel {
       Statement statement = this.connection.createStatement();
       ResultSet resultSet = statement.executeQuery(
               "SELECT TABLE_NAME " +
-              "FROM information_schema.tables " +
-              "WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA = 'GroupExpensesApplication';");
+                      "FROM information_schema.tables " +
+                      "WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA = 'GroupExpensesApplication';");
 
       while (resultSet.next()) {
         tableNames.add(resultSet.getString("TABLE_NAME"));
@@ -139,6 +139,7 @@ public class ApplicationModel {
 
   /**
    * checks if the given string matches a table within the database.
+   *
    * @param tableName represents the table name being checked.
    * @return a boolean representing whether or not the table exists.
    */
@@ -148,7 +149,22 @@ public class ApplicationModel {
 
   // add account (cannot add if account already exists, autoincrement shouldnt be problem)
 
-  // public void addAccount(String firstName, String lastName, )
+  public void addAccount(String firstName, String lastName, String username, String password) {
+
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "INSERT INTO accounts (firstName, lastName, username, password) " +
+                      "VALUES ('" +
+                      firstName + "', '" +
+                      lastName + "', '" +
+                      username + "', '" +
+                      password + "');");
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
 
   // add group (cannot add if group already exists)
 
