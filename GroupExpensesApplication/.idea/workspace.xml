@@ -24,7 +24,7 @@
       <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
+            <state relative-caret-position="656">
               <caret line="89" column="35" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="35" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -36,20 +36,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationModel.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ApplicationModel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ApplicationModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="155" column="6" selection-start-line="155" selection-start-column="6" selection-end-line="155" selection-end-column="6" />
+            <state relative-caret-position="120">
+              <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3268#3276#0" expanded="true" />
+                <element signature="e#3149#3157#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ApplicationController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ApplicationController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="311">
@@ -81,14 +81,13 @@
         <option value="$PROJECT_DIR$/src/Group.java" />
         <option value="$PROJECT_DIR$/src/Expense.java" />
         <option value="$PROJECT_DIR$/src/Account.java" />
-        <option value="$PROJECT_DIR$/src/ApplicationModel.java" />
         <option value="$PROJECT_DIR$/src/ApplicationController.java" />
+        <option value="$PROJECT_DIR$/src/ApplicationModel.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="93" />
-    <option name="y" value="14" />
+    <option name="x" value="-3" />
     <option name="width" value="1133" />
     <option name="height" value="878" />
   </component>
@@ -452,7 +451,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="93" y="14" width="1133" height="878" extended-state="0" />
+    <frame x="-3" y="0" width="1133" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -522,7 +521,7 @@
           <caret line="112" column="31" selection-start-line="112" selection-start-column="31" selection-end-line="112" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3268#3276#0" expanded="true" />
+            <element signature="e#3149#3157#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -556,7 +555,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3268#3276#0" expanded="true" />
+            <element signature="e#3149#3157#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -592,7 +591,7 @@
           <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3268#3276#0" expanded="true" />
+            <element signature="e#3149#3157#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -628,7 +627,7 @@
           <caret line="99" column="47" selection-start-line="99" selection-start-column="47" selection-end-line="99" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3268#3276#0" expanded="true" />
+            <element signature="e#3149#3157#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -662,9 +661,19 @@
     <entry file="file://$PROJECT_DIR$/src/Expense.java" />
     <entry file="file://$PROJECT_DIR$/src/Group.java" />
     <entry file="file://$PROJECT_DIR$/src/Expense.java" />
+    <entry file="file://$PROJECT_DIR$/src/ApplicationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
+        <state relative-caret-position="656">
           <caret line="89" column="35" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="35" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -677,21 +686,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ApplicationModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="155" column="6" selection-start-line="155" selection-start-column="6" selection-end-line="155" selection-end-column="6" />
+        <state relative-caret-position="120">
+          <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3268#3276#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ApplicationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3149#3157#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -102,14 +102,6 @@ public class ApplicationModel {
 
   }
 
-  public Account getLogin() {
-    return login;
-  }
-
-  public Connection getConnection() {
-    return connection;
-  }
-
 
   /**
    * returns a list of all table names in this database.
@@ -147,6 +139,46 @@ public class ApplicationModel {
     return this.getTableNames().contains(tableName);
   }
 
+  // gets table from the database
+
+  /**
+   * returns the ResultSet of selecting * from a given table within the database.
+   * 
+   * @param tableName represents the name of the table to be selected from.
+   * @return a ResultSet containing all elemnents within the table matching the given name.
+   */
+  public ResultSet getTable(String tableName) {
+
+    if (!this.containsTable(tableName)) {
+      throw new IllegalArgumentException("Table does not exist. ");
+    }
+
+    ResultSet resultSet = null;
+
+    try {
+      Statement statement = this.connection.createStatement();
+      resultSet = statement.executeQuery(
+              "SELECT * FROM " + tableName + ";");
+
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+    return resultSet;
+
+  }
+
+//  // check if account exists. must do before adding.
+//
+//  public boolean containsValue(String tableName, String rowValue) {
+//
+//
+//
+//
+//
+//  }
+
   // add account (cannot add if account already exists, autoincrement shouldnt be problem)
 
   public void addAccount(String firstName, String lastName, String username, String password) {
@@ -168,6 +200,8 @@ public class ApplicationModel {
 
   // add group (cannot add if group already exists)
 
+  //
+
   // add expense (check if group exists first, accounts exist within group)
 
   // add groupInvite
@@ -183,5 +217,16 @@ public class ApplicationModel {
   // retrieve group Invite
 
   // retrieve groupList
+
+
+  public Account getLogin() {
+    return login;
+  }
+
+  public Connection getConnection() {
+    return connection;
+  }
+
+
 
 }
