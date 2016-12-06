@@ -205,7 +205,7 @@ public class ApplicationModel {
               "INSERT INTO GroupExpensesApplication.group (groupName, adminID) " +
                       "VALUES ('" +
                       groupName + "', '" +
-                      adminID + "');");
+                      adminID + ");");
 
     } catch (SQLException e) {
       System.out.println(e.getMessage());
@@ -213,6 +213,29 @@ public class ApplicationModel {
   }
 
   // add expense (check if group exists first, accounts exist within group)
+
+  public void addExpense(int expenseID, int groupID, int accountOwes, int accountOwed, int amountOwed,
+                         boolean paid, String date, String expenseName) {
+
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "INSERT INTO expense " +
+                      "(expenseID, groupID, accountOwes, accountOwed, amountOwed, paid, date, name) " +
+                      "VALUES (" +
+                      expenseID + ", " +
+                      groupID + ", '" +
+                      accountOwes + "', '" +
+                      accountOwed + "', '" +
+                      amountOwed + "', " +
+                      paid + ", '" +
+                      date + "', '" +
+                      expenseName + "');");
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
 
   // add groupInvite
 
