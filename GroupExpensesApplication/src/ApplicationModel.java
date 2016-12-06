@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -108,7 +109,7 @@ public class ApplicationModel {
    *
    * @return an ArrayList of Strings of the table names.
    */
-  public ArrayList<String> getTableNames() {
+  private ArrayList<String> getTableNames() {
 
     ArrayList<String> tableNames = new ArrayList<String>(5);
 
@@ -130,28 +131,12 @@ public class ApplicationModel {
   }
 
   /**
-   * checks if the given string matches a table within the database.
-   *
-   * @param tableName represents the table name being checked.
-   * @return a boolean representing whether or not the table exists.
-   */
-  public boolean containsTable(String tableName) {
-    return this.getTableNames().contains(tableName);
-  }
-
-  // gets table from the database
-
-  /**
    * returns the ResultSet of selecting * from a given table within the database.
    * 
    * @param tableName represents the name of the table to be selected from.
    * @return a ResultSet containing all elemnents within the table matching the given name.
    */
   public ResultSet getTable(String tableName) {
-
-    if (!this.containsTable(tableName)) {
-      throw new IllegalArgumentException("Table does not exist. ");
-    }
 
     ResultSet resultSet = null;
 
@@ -169,15 +154,27 @@ public class ApplicationModel {
 
   }
 
-//  // check if account exists. must do before adding.
-//
-//  public boolean containsValue(String tableName, String rowValue) {
-//
-//
-//
-//
-//
-//  }
+  // gets field names of a table
+
+  public ArrayList<String> getFieldNames(String tableName) {
+    ArrayList<String> fieldNames = new ArrayList<String>();
+
+    try {
+      Statement statement = this.connection.createStatement();
+      ResultSet resultSet = statement.executeQuery(
+              "SELECT * FROM " + tableName + " LIMIT 0;");
+      ResultSetMetaData metaData = resultSet.getMetaData();
+
+      for (int i = 1; i < metaData.getColumnCount(); i++) {
+        fieldNames.add(metaData.getColumnName(i));
+      }
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+    return fieldNames;
+  }
+
 
   // add account (cannot add if account already exists, autoincrement shouldnt be problem)
 
@@ -200,7 +197,20 @@ public class ApplicationModel {
 
   // add group (cannot add if group already exists)
 
-  //
+  public void addGroup(String groupName, int adminID ) {
+
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "INSERT INTO GroupExpensesApplication.group (groupName, adminID) " +
+                      "VALUES ('" +
+                      groupName + "', '" +
+                      adminID + "');");
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
 
   // add expense (check if group exists first, accounts exist within group)
 
