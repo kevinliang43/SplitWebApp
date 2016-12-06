@@ -8,7 +8,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Represents an account in the application.
@@ -32,6 +31,10 @@ public class Account {
    */
   public String getField(String fieldName) {
 
+    if (!this.containsField(fieldName)) {
+      throw new IllegalArgumentException("field given does not exist. ");
+    }
+
     String field = "";
 
     try {
@@ -48,14 +51,22 @@ public class Account {
     return field;
   }
 
-  // check if field exists
 
   /**
-   * Checks if the fieldName string matches any of the fieldNames that exist in
-   * @param fieldName
-   * @return
+   * checks if the given field Name exists in the accounts.
+   * @param fieldName represents the fieldName to be checked.
+   * @return boolean representing if the field name exists.
    */
-  public boolean checkField(String fieldName) {
+  public boolean containsField(String fieldName) {
+    return this.getFieldNames().contains(fieldName);
+  }
+
+  /**
+   * Gets all the field Names of an account and stores it in an ArrayList.
+   *
+   * @return an arrayList with all fieldNames.
+   */
+  public ArrayList<String> getFieldNames() {
 
     ArrayList<String> fieldNames = new ArrayList<String>(5);
 
@@ -73,8 +84,8 @@ public class Account {
       System.out.println(e.getMessage());
     }
 
-    System.out.println(fieldNames);
-    return fieldNames.contains(fieldName);
+    return fieldNames;
+
   }
 
 }

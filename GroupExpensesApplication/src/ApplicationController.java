@@ -37,16 +37,6 @@ public class ApplicationController {
       System.out.println(e.getMessage());
     }
 
-    System.out.println(model.getLogin().checkField("firstName"));
-
-//    System.out.println(model.getLogin().getField("firstName"));
-//    System.out.println(model.getLogin().getField("lastName"));
-//    System.out.println(model.getLogin().getField("accountID"));
-//    System.out.println(model.getLogin().getField("username"));
-//    System.out.println(model.getLogin().getField("password"));
-
-
-
   }
 
 
