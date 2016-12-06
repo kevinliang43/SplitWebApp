@@ -39,7 +39,7 @@ public class ApplicationController {
       System.out.println(e.getMessage());
     }
 
-    model.removeExpense(4);
+    model.removeGroupList(1, 11);
 
 
   }

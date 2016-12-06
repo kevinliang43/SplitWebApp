@@ -314,7 +314,7 @@ public class ApplicationModel {
    * Removes a group from the database.
    * Cannot remove a group that does not exist. (Query will run, nothing will happen).
    *
-   * @param groupID represents the ID of the account to be deleted.
+   * @param groupID represents the ID of the group to be deleted.
    */
   public void removeGroup(int groupID) {
     try {
@@ -327,13 +327,11 @@ public class ApplicationModel {
     }
   }
 
-  // remove expense
-
   /**
    * Removes an expense from the database.
    * Cannot remove an account that does not exist. (Query will run, nothing will happen).
    *
-   * @param expenseID represents the ID of the account to be deleted.
+   * @param expenseID represents the ID of the expense to be deleted.
    */
   public void removeExpense(int expenseID) {
     try {
@@ -348,7 +346,49 @@ public class ApplicationModel {
 
   // remove group Invite
 
+  /**
+   * Removes a group Invite from the database.
+   * Cannot remove a group invite that does not exist. (Query will run, nothing will happen).
+   *
+   * @param groupID represents the group ID of the group Invite to be deleted.
+   * @param accountID represents the account ID of the invite to be deleted
+   */
+  public void removeGroupInvite(int groupID, int accountID) {
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "DELETE FROM groupInvite " +
+                      "WHERE groupID = " + groupID +
+                      " AND accountID = " + accountID +"; ");
+    } catch(SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
   // remove groupList
+
+  /**
+   * Removes a group from the Account's groupList.
+   *
+   * Cannot remove a group from an account that does not exist.
+   * Cannot remove a group from an account who doesnt have that group on their list.
+   * Account cannot remove a group that doesnt exist.
+   * (Query will run, nothing will happen).
+   *
+   * @param groupID represents the group ID of the group being removed.
+   * @param accountID represents the account ID of the person removing the group.
+   */
+  public void removeGroupList(int accountID, int groupID) {
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "DELETE FROM groupList " +
+                      "WHERE groupID = " + groupID +
+                      " AND accountID = " + accountID +"; ");
+    } catch(SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
 
   // retrieve account info
 
