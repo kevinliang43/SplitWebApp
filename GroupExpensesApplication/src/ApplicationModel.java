@@ -310,7 +310,7 @@ public class ApplicationModel {
 
   // remove group
 
-  
+
 
   // remove expense
 

@@ -31,9 +31,6 @@ public class Account {
    */
   public String getField(String fieldName) {
 
-    if (!this.containsField(fieldName)) {
-      throw new IllegalArgumentException("field given does not exist. ");
-    }
 
     String field = "";
 
@@ -49,16 +46,6 @@ public class Account {
       System.out.println(e.getMessage());
     }
     return field;
-  }
-
-
-  /**
-   * checks if the given field Name exists in the accounts.
-   * @param fieldName represents the fieldName to be checked.
-   * @return boolean representing if the field name exists.
-   */
-  public boolean containsField(String fieldName) {
-    return this.getFieldNames().contains(fieldName);
   }
 
   /**
@@ -85,6 +72,79 @@ public class Account {
     }
     return fieldNames;
   }
+
+  /**
+   * Updates the first name of this account.
+   *
+   * @param newName represents the new first name of the account.
+   */
+  public void updateFirstName(String newName) {
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "UPDATE accounts " +
+                      "SET firstName ='" + newName +"' " +
+                      "WHERE accountID = " + this.accountID + ";");
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  // update lastName
+
+  /**
+   * Updates the last name of this account.
+   *
+   * @param newName represents the new last name of the account.
+   */
+  public void updateLastName(String newName) {
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "UPDATE accounts " +
+                      "SET lastName ='" + newName +"' " +
+                      "WHERE accountID = " + this.accountID + ";");
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  // update password
+
+  /**
+   * Updates the password of this account on the given conditions:
+   * 1. the oldPassword matches the current one.
+   * 2. the newPassword and the confirmation password match.
+   *
+   * @param oldPassword represents the old password of this account to check against the current.
+   * @param newPassword represents the new password (to be changed to).
+   * @param confirm represents the new password, acts as a confirmation.
+   */
+  public void updatePassword(String oldPassword, String newPassword, String confirm) {
+    if (!newPassword.equals(confirm)) {
+      throw new IllegalArgumentException("New Password and confirmation password do not match. ");
+    }
+
+    if (!this.getField("password").equals(oldPassword)) {
+      throw new IllegalArgumentException("Current password does not match the one given. ");
+    }
+
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "UPDATE accounts " +
+                      "SET password ='" + newPassword +"' " +
+                      "WHERE accountID = " + this.accountID + ";");
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+  }
+
+
 
   @Override
   public boolean equals(Object o) {

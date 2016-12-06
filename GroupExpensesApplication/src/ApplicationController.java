@@ -17,12 +17,14 @@ public class ApplicationController {
       String username;
       String password;
 
-      System.out.println("Please enter a username: ");
-      username = scanner.nextLine();
-      System.out.println("Please enter a password: ");
-      password = scanner.nextLine();
+//      System.out.println("Please enter a username: ");
+//      username = scanner.nextLine();
+//      System.out.println("Please enter a password: ");
+//      password = scanner.nextLine();
+//
+//      model.getConnection(username, password, "GroupExpensesApplication");
 
-      model.getConnection(username, password, "GroupExpensesApplication");
+      model.getConnection("root", "kevin123", "GroupExpensesApplication");
 
 
     }
@@ -32,12 +34,12 @@ public class ApplicationController {
     }
 
     try {
-      model.accountLogin("kevinliang1", "123");
+      model.accountLogin("test", "test");
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
 
-    model.addAccount("test", "test", "test", "test");
+    model.getLogin().updatePassword("test", "test2", "test2");
 
 
   }
