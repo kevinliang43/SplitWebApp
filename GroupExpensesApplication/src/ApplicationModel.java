@@ -310,9 +310,41 @@ public class ApplicationModel {
 
   // remove group
 
-
+  /**
+   * Removes a group from the database.
+   * Cannot remove a group that does not exist. (Query will run, nothing will happen).
+   *
+   * @param groupID represents the ID of the account to be deleted.
+   */
+  public void removeGroup(int groupID) {
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "DELETE FROM GroupExpensesApplication.group " +
+                      "WHERE groupID = " + groupID +"; ");
+    } catch(SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
 
   // remove expense
+
+  /**
+   * Removes an expense from the database.
+   * Cannot remove an account that does not exist. (Query will run, nothing will happen).
+   *
+   * @param expenseID represents the ID of the account to be deleted.
+   */
+  public void removeExpense(int expenseID) {
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "DELETE FROM expense " +
+                      "WHERE expenseID = " + expenseID +"; ");
+    } catch(SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
 
   // remove group Invite
 

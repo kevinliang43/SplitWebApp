@@ -34,12 +34,12 @@ public class ApplicationController {
     }
 
     try {
-      model.accountLogin("test", "test");
+      model.accountLogin("kevinliang1", "123");
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
 
-    model.getLogin().updatePassword("test", "test2", "test2");
+    model.removeExpense(4);
 
 
   }
