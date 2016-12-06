@@ -37,6 +37,8 @@ public class ApplicationController {
       System.out.println(e.getMessage());
     }
 
+    model.addAccount("test", "test", "test", "test");
+
 
   }
 

@@ -178,6 +178,15 @@ public class ApplicationModel {
 
   // add account (cannot add if account already exists, autoincrement shouldnt be problem)
 
+  /**
+   * Adds an account to the database.
+   * Cannot add an account if the username already exists in the database.
+   *
+   * @param firstName represents first name of account.
+   * @param lastName represents the last name of the account.
+   * @param username represents the username of the account.
+   * @param password represents the password of the account.
+   */
   public void addAccount(String firstName, String lastName, String username, String password) {
 
     try {
@@ -195,8 +204,13 @@ public class ApplicationModel {
     }
   }
 
-  // add group (cannot add if group already exists)
-
+  /**
+   * Adds a group to the group table within the database.
+   * cannot add a group with an admin (account) that does not exist in the account table.
+   *
+   * @param groupName represents the name of the group.
+   * @param adminID represents the account with admin status of this group.
+   */
   public void addGroup(String groupName, int adminID ) {
 
     try {
@@ -214,6 +228,18 @@ public class ApplicationModel {
 
   // add expense (check if group exists first, accounts exist within group)
 
+  /**
+   * Adds an expense to the database.
+   *
+   * @param expenseID represents the ID of the expense.
+   * @param groupID represents the group in which the expense happens.
+   * @param accountOwes represents the account that owes money.
+   * @param accountOwed represents the account that is owed.
+   * @param amountOwed represents teh amount owed.
+   * @param paid boolean representing whether the expense has been paid.
+   * @param date date of the expense.
+   * @param expenseName name of the expense.
+   */
   public void addExpense(int expenseID, int groupID, int accountOwes, int accountOwed, int amountOwed,
                          boolean paid, String date, String expenseName) {
 
@@ -239,7 +265,58 @@ public class ApplicationModel {
 
   // add groupInvite
 
+  /**
+   * Adds a group invite to the group invite table in the database.
+   * Cannot add a group invite, if the group invite already exists.
+   * (Pair of groupID, acccountID exists).
+   *
+   * @param groupID represents the group inviting the person.
+   * @param accountID represents the person being invited.
+   */
+  public void addGroupInvite(int groupID, int accountID) {
+
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "INSERT INTO groupInvite (groupID, accountID) " +
+                      "VALUES ('" +
+                      groupID + "', " +
+                      accountID + ");");
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
   // add groupList (add group, remove group invite)
+
+
+  /**
+   * Removes an account from the database.
+   * Cannot remove an account that does not exist. (Query will run, nothing will happen).
+   *
+   * @param accountID represents the ID of the account to be deleted.
+   */
+  public void removeAccount(int accountID) {
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "DELETE FROM accounts " +
+                      "WHERE accountID = " + accountID +"; ");
+  } catch(SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  // remove group
+
+  
+
+  // remove expense
+
+  // remove group Invite
+
+  // remove groupList
 
   // retrieve account info
 
