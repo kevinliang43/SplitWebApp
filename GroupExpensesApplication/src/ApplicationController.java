@@ -39,8 +39,8 @@ public class ApplicationController {
       System.out.println(e.getMessage());
     }
 
-    for (Account account : new Group(1, model.getConnection()).getMemberList()) {
-      System.out.println(account.getField("firstName") + " " + account.getField("lastName") + ", ");
+    for (String field: new Expense(1, model.getConnection()).getField("accountOwes")) {
+      System.out.println(field);
     }
 
 
