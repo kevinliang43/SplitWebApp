@@ -177,10 +177,37 @@ public class Account {
 
   // get the group invites of this person
 
-  
+  /**
+   * returns all group invites to this account.
+   * @return an arraylist containing all GroupInvites to this Account.
+   */
+  public ArrayList<GroupInvite> getGroupInvites() {
+    ArrayList<GroupInvite> groupList = new ArrayList<GroupInvite>();
 
-  // get all expenses owed to this person (by group or all)
+    try {
+      Statement statement = this.connection.createStatement();
+      ResultSet resultSet = statement.executeQuery(
+              "SELECT * FROM groupInvite" +
+                      " WHERE accountID = " + this.accountID + ";");
 
+      while (resultSet.next()) {
+        groupList.add(new GroupInvite(resultSet.getInt("groupID"),
+                this, this.connection));
+      }
+
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+    return groupList;
+  }
+
+  /**
+   * Gets the top 5 recent expenses of this account
+   *
+   * @return arraylist containing the 5 most recent expenses.
+   */
   public ArrayList<Expense> recent5Expense() {
     ArrayList<Expense> recentExpenseList = new ArrayList<Expense>();
 
@@ -201,6 +228,136 @@ public class Account {
     return recentExpenseList;
 
   }
+
+  /**
+   * Gets the total owed to this account.
+   *
+   * @return integer containing the 5 most recent expenses.
+   */
+  public int totalOwed() {
+    int total = 0;
+
+    try {
+      Statement statement = this.connection.createStatement();
+      ResultSet resultSet = statement.executeQuery(
+              "CALL totalOwed(" + this.accountID  + ");");
+
+      resultSet.next();
+
+      total = resultSet.getInt("total");
+
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+    return total;
+  }
+
+  /**
+   * Gets the total owed by this account.
+   *
+   * @return integer containing the 5 most recent expenses.
+   */
+  public int totalOwes() {
+    int total = 0;
+
+    try {
+      Statement statement = this.connection.createStatement();
+      ResultSet resultSet = statement.executeQuery(
+              "CALL totalOwes(" + this.accountID  + ");");
+
+      resultSet.next();
+
+      total = resultSet.getInt("total");
+
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+    return total;
+  }
+
+  /**
+   * accepts an invite from a group.
+   * Adds person to the groupList. Deletes the groupInvite. Both from the database.
+   *
+   * @param g represents the groupInvite.
+   */
+  public void acceptInvite(GroupInvite g) {
+    if (!this.getGroupInvites().contains(g)) {
+      throw new IllegalArgumentException("Cannot accept a group invite that does not exist. ");
+    }
+
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "INSERT INTO groupList (accountID, groupID) VALUES ("
+                      + g.getField("accountID") + ", " + g.getField("groupID") + "); ");
+
+      statement.executeUpdate(
+              "DELETE FROM groupInvite WHERE groupID = "
+                      + g.getField("groupID") +
+                      " AND accountID = " + g.getField("accountID") + "; ");
+
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  /**
+   * Sends an invite from a certain group to another account.
+   *
+   * @param group represents from which group you are sending the invite to.
+   * @param account represents the account which you are sending the invite to.
+   */
+  public void sendInvite(Group group, Account account) {
+    if (Integer.valueOf(group.getField("adminID")) != this.accountID) {
+      throw new IllegalArgumentException("You are not the admin of this Group. ");
+    }
+
+    if (account.equals(this)) {
+      throw new IllegalArgumentException("Cannot send an invite to yourself. ");
+    }
+
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "INSERT INTO groupInvite (groupID, accountID) VALUES ("
+                      + group.getField("groupID") + ", " + account.getField("accountID") + "); ");
+
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+  }
+
+
+  /**
+   * declines an invite from a group. Can only decline a invite that actually exists.
+   * @param group
+   */
+  public void declineInvite(GroupInvite group) {
+    if (!this.getGroupInvites().contains(group)) {
+      throw new IllegalArgumentException("Cannot decline an invite that doesn't exist");
+    }
+
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "DELETE FROM groupInvite WHERE groupID = "
+                      + group.getField("groupID") + " AND accountID = " + this.getField("accountID") + "; ");
+
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+  }
+  
 
 
   // get all expenses owed by this person (by group or all)

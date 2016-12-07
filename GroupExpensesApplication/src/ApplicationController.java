@@ -40,12 +40,10 @@ public class ApplicationController {
     }
 
 
-    for (Expense e : model.getLogin().recent5Expense()) {
-      System.out.println(e.toString());
-    }
 
 
-
+    System.out.println(new Account(1, model.getConnection()).totalOwed());
+    System.out.println(new Account(1, model.getConnection()).totalOwes());
   }
 
 
