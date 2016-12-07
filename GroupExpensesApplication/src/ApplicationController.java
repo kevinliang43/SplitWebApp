@@ -39,7 +39,9 @@ public class ApplicationController {
       System.out.println(e.getMessage());
     }
 
-    System.out.println(model.getLogin().getGroupListID());
+    for (Account account : new Group(1, model.getConnection()).getMemberList()) {
+      System.out.println(account.getField("firstName") + " " + account.getField("lastName") + ", ");
+    }
 
 
   }

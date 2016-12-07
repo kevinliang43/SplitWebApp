@@ -17,6 +17,7 @@ public class Account {
   private int accountID;
   private Connection connection;
 
+
   public Account(int accountID, Connection connection) {
     this.accountID = accountID;
     this.connection = connection;
@@ -148,9 +149,14 @@ public class Account {
 
   // get the group list of this person
 
-  public ArrayList<String> getGroupListID() {
+  /**
+   * returns all Groups that this Account is apart of.
+   *
+   * @return an ArrayList of all groups that this account is a part of.
+   */
+  public ArrayList<Group> getGroupList() {
 
-    ArrayList<String> groupList = new ArrayList<String>();
+    ArrayList<Group> groupList = new ArrayList<Group>();
 
     try {
       Statement statement = this.connection.createStatement();
@@ -158,7 +164,7 @@ public class Account {
               "SELECT groupID FROM groupList WHERE accountID = " + this.accountID +";");
 
       while (resultSet.next()) {
-        groupList.add(resultSet.getString("groupID"));
+        groupList.add(new Group(resultSet.getInt("groupID"), this.connection));
       }
 
 
@@ -169,14 +175,6 @@ public class Account {
     return groupList;
 
   }
-
-  // get names of given group list
-
-//  public ArrayList<String> getGroupListNames() {
-//
-//
-//
-//  }
 
   // get the group invites of this person
 
