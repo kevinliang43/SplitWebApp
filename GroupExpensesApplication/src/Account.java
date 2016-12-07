@@ -173,16 +173,38 @@ public class Account {
     }
 
     return groupList;
-
   }
 
   // get the group invites of this person
 
+  
+
   // get all expenses owed to this person (by group or all)
 
+  public ArrayList<Expense> recent5Expense() {
+    ArrayList<Expense> recentExpenseList = new ArrayList<Expense>();
+
+    try {
+      Statement statement = this.connection.createStatement();
+      ResultSet resultSet = statement.executeQuery(
+              "CALL top_expenses(" + this.accountID  + ");");
+
+      while (resultSet.next()) {
+        recentExpenseList.add(new Expense(resultSet.getInt("expenseID"), this.connection));
+      }
+
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+    return recentExpenseList;
+
+  }
 
 
   // get all expenses owed by this person (by group or all)
+
 
 
 

@@ -13,8 +13,8 @@ public class Group {
   private int groupID;
   private Connection connection;
 
-  public Group(int accountID, Connection connection) {
-    this.groupID = accountID;
+  public Group(int groupID, Connection connection) {
+    this.groupID = groupID;
     this.connection = connection;
   }
 
