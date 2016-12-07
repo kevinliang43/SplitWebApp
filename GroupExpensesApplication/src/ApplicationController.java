@@ -1,4 +1,5 @@
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -40,10 +41,15 @@ public class ApplicationController {
     }
 
 
+//    ArrayList<Account> noobs = new ArrayList<Account>();
+//    noobs.add(new Account(4, model.getConnection()));
+//    noobs.add(new Account(5, model.getConnection()));
+//    noobs.add(new Account(6, model.getConnection()));
+//
+//   model.getLogin().addExpense(new Group(1, model.getConnection()),
+//           10, noobs, 6, false, "2016-12-23", "Lunch");
 
-
-    System.out.println(new Account(1, model.getConnection()).totalOwed());
-    System.out.println(new Account(1, model.getConnection()).totalOwes());
+    System.out.println(model.generateExpenseID());
   }
 
 

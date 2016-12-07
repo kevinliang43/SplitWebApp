@@ -8,6 +8,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents an account in the application.
@@ -357,8 +358,70 @@ public class Account {
     }
 
   }
-  
 
+  // add expense
+  public void addExpense(Group group, int expenseID, List<Account> owes,
+                         int amountOwed, boolean paid, String date, String expenseName) {
+    if (!this.getGroupList().contains(group)) {
+      throw new IllegalArgumentException("Cannot add expense to a group that youre not in. ");
+    }
+
+    if (group.getExpenses().contains(new Expense(expenseID, this.connection))) {
+      throw new IllegalArgumentException("Cannot add an expense that already exists. ");
+    }
+    for (Account account : owes) {
+      this.addSubExpense(expenseID,
+              Integer.valueOf(group.getField("groupID")),
+              Integer.valueOf(account.getField("accountID")),
+              Integer.valueOf(this.getField("accountID")),
+              amountOwed, paid, date, expenseName);
+    }
+
+  }
+
+  // generate sub expense.
+
+  private void addSubExpense(int expenseID, int groupID, int accountOwes, int accountOwed,
+                             int amountOwed, boolean paid, String date, String expenseName) {
+
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "INSERT INTO expense " +
+                      "(expenseID, groupID, accountOwes, accountOwed, amountOwed, paid, date, name) " +
+                      "VALUES (" +
+                      expenseID + ", " +
+                      groupID + ", '" +
+                      accountOwes + "', '" +
+                      accountOwed + "', '" +
+                      amountOwed + "', " +
+                      paid + ", '" +
+                      date + "', '" +
+                      expenseName + "');");
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+  }
+
+  // delete expense
+  public void deleteExpense(Group group, Expense expense) {
+
+    if (!group.getExpenses().contains(expense)) {
+      throw new IllegalArgumentException("Cannot delete an expense that does not exist. ");
+    }
+
+    if (!expense.getField("accountOwed").equals(this.getField("accountID"))) {
+      throw new IllegalArgumentException("Cannot delete an expense that is not yours.");
+    }
+
+
+
+  }
+
+
+  // update expense (paid/ not paid)
 
   // get all expenses owed by this person (by group or all)
 

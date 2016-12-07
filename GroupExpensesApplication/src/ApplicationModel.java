@@ -391,17 +391,23 @@ public class ApplicationModel {
     }
   }
 
-  // bug within addexpenses, where you can add an expense person not in the group.////////////////////////
+  //generate a new ExpenseID
 
-  // retrieve account info
+  public int generateExpenseID() {
+    int id = 0;
+    try {
+      Statement statement = this.connection.createStatement();
+      ResultSet resultSet = statement.executeQuery("SELECT DISTINCT maxExpenseID() AS ExpenseID");
 
-  // retrieve group info
+      resultSet.next();
+      id = resultSet.getInt("ExpenseID");
 
-  // retrieve expense info
 
-  // retrieve group Invite
-
-  // retrieve groupList
+    } catch(SQLException e) {
+      System.out.println(e.getMessage());
+    }
+    return id;
+  }
 
 
   public Account getLogin() {
