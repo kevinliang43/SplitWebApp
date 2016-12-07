@@ -201,6 +201,7 @@ public class ApplicationModel {
 
     } catch (SQLException e) {
       System.out.println(e.getMessage());
+      System.out.print("Please enter a differnt Username. ");
     }
   }
 
