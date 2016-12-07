@@ -39,7 +39,7 @@ public class ApplicationController {
       System.out.println(e.getMessage());
     }
 
-    model.removeGroupList(1, 11);
+    System.out.println(model.getLogin().getGroupListID());
 
 
   }

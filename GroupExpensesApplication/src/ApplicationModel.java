@@ -390,6 +390,8 @@ public class ApplicationModel {
     }
   }
 
+  // bug within addexpenses, where you can add an expense person not in the group.////////////////////////
+
   // retrieve account info
 
   // retrieve group info

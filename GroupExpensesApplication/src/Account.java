@@ -144,6 +144,46 @@ public class Account {
 
   }
 
+  /////////////////////////////////Account Functions//////////////////////////////////
+
+  // get the group list of this person
+
+  public ArrayList<String> getGroupListID() {
+
+    ArrayList<String> groupList = new ArrayList<String>();
+
+    try {
+      Statement statement = this.connection.createStatement();
+      ResultSet resultSet = statement.executeQuery(
+              "SELECT groupID FROM groupList WHERE accountID = " + this.accountID +";");
+
+      while (resultSet.next()) {
+        groupList.add(resultSet.getString("groupID"));
+      }
+
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+    return groupList;
+
+  }
+
+  // get names of given group list
+
+//  public ArrayList<String> getGroupListNames() {
+//
+//
+//
+//  }
+
+  // get the group invites of this person
+
+  // get all expenses owed to this person (by group or all)
+
+  // get all expenses owed by this person (by group or all)
+
 
 
   @Override
