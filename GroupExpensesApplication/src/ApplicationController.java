@@ -50,7 +50,14 @@ public class ApplicationController {
 //           10, noobs, 6, false, "2016-12-23", "Lunch");
 
     System.out.println(model.generateExpenseID());
+
+    new Account(1, model.getConnection()).updateExpense(
+            new SubExpense(1, new Account(5, model.getConnection()), model.getConnection()),
+            1);
+
   }
+
+
 
 
 

@@ -360,6 +360,17 @@ public class Account {
   }
 
   // add expense
+
+  /**
+   * Adds an expense to the database.
+   * @param group group in which the transaction happens.
+   * @param expenseID ID of the expense.
+   * @param owes the PEOPLE who owes this person money.
+   * @param amountOwed the amount owed.
+   * @param paid boolean whether paid or not.
+   * @param date date of transaction.
+   * @param expenseName name of the expense.
+   */
   public void addExpense(Group group, int expenseID, List<Account> owes,
                          int amountOwed, boolean paid, String date, String expenseName) {
     if (!this.getGroupList().contains(group)) {
@@ -381,6 +392,18 @@ public class Account {
 
   // generate sub expense.
 
+  /**
+   * Generates a subexpense.
+   *
+   * @param expenseID represents the expense ID
+   * @param groupID represents the group ID.
+   * @param accountOwes Represents the group that owes money.
+   * @param accountOwed represents the person that is owed.
+   * @param amountOwed represents the amount owed.
+   * @param paid represents whether this expense has been paid off or not.
+   * @param date represents the date in which the transaction occured.
+   * @param expenseName name of the expense.
+   */
   private void addSubExpense(int expenseID, int groupID, int accountOwes, int accountOwed,
                              int amountOwed, boolean paid, String date, String expenseName) {
 
@@ -405,6 +428,13 @@ public class Account {
 
   }
 
+  /**
+   * deletes an expense from the database.
+   *
+   * @param group group in which the expense occured.
+   * @param expense the expense to be deleted.
+   */
+
   // delete expense
   public void deleteExpense(Group group, Expense expense) {
 
@@ -412,8 +442,20 @@ public class Account {
       throw new IllegalArgumentException("Cannot delete an expense that does not exist. ");
     }
 
-    if (!expense.getField("accountOwed").equals(this.getField("accountID"))) {
+    if (Integer.valueOf(expense.getField("accountOwed").get(0)) !=
+    Integer.valueOf(this.getField("accountID"))) {
       throw new IllegalArgumentException("Cannot delete an expense that is not yours.");
+    }
+
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "DELETE FROM expense WHERE expenseID = " +
+                       expense.getField("expenseID").get(0) + "; ");
+
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
     }
 
 
@@ -422,6 +464,35 @@ public class Account {
 
 
   // update expense (paid/ not paid)
+
+  /**
+   * updates a subexpense.
+   *
+   * @param subexpense expense to be updated.
+   * @param newBool new paid/not paid value.
+   */
+
+  public void updateExpense(SubExpense subexpense, int newBool) {
+    if (!subexpense.getField("accountOwed").equals(this.getField("accountID"))) {
+      throw new IllegalArgumentException("Cannot update a Sub Expense that is not yours. ");
+    }
+
+    try {
+      Statement statement = this.connection.createStatement();
+      statement.executeUpdate(
+              "UPDATE expense " +
+                      "SET paid = " + newBool +" " +
+                      "WHERE expenseID = " + subexpense.getField("expenseID") +
+                      " AND accountOwed = " + this.accountID +
+                      " AND accountOwes = " + subexpense.getField("accountOwes") + ";");
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+
+
+
+  }
 
   // get all expenses owed by this person (by group or all)
 
