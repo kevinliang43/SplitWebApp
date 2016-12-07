@@ -39,8 +39,8 @@ public class ApplicationController {
       System.out.println(e.getMessage());
     }
 
-    for (String field: new Expense(1, model.getConnection()).getField("accountOwes")) {
-      System.out.println(field);
+    for (SubExpense subexpense: new Expense(1, model.getConnection()).getSubExpenses()) {
+      System.out.println(subexpense.toString());
     }
 
 

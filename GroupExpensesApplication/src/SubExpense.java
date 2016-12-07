@@ -7,77 +7,49 @@ import java.util.ArrayList;
 /**
  * Created by KevinLiang on 12/6/16.
  */
-public class Expense {
+public class SubExpense {
 
   private int expenseID;
+  private Account accountOwes;
   private Connection connection;
 
-  public Expense(int expenseID, Connection connection) {
+  public SubExpense(int expenseID, Account accountOwes, Connection connection) {
     this.expenseID = expenseID;
+    this.accountOwes = accountOwes;
     this.connection = connection;
   }
 
   /**
-   * Gets the row value for the specified field of this expense.
+   * Gets the row value for the specified field of this group.
    *
    * @param fieldName represents the field required.
    * @return a String of the row value.
    */
-  public ArrayList<String> getField(String fieldName) {
+  public String getField(String fieldName) {
 
 
-    ArrayList<String> fields = new ArrayList<String>();
-
-    try {
-      Statement statement = this.connection.createStatement();
-      ResultSet resultSet = statement.executeQuery(
-              "SELECT * FROM expense " +
-                      "WHERE expenseID = " + this.expenseID + ";");
-
-      while (resultSet.next()) {
-        fields.add(resultSet.getString(fieldName));
-      }
-
-    } catch (SQLException e) {
-      System.out.println(e.getMessage());
-    }
-    return fields;
-  }
-
-  /**
-   * Returns all subexpenses that make up this expense.
-   *
-   * @return
-   */
-  public ArrayList<SubExpense> getSubExpenses() {
-
-    ArrayList subExpenses = new ArrayList<SubExpense>();
+    String field = "";
 
     try {
       Statement statement = this.connection.createStatement();
       ResultSet resultSet = statement.executeQuery(
               "SELECT * FROM expense " +
-                      "WHERE expenseID = " + this.expenseID + ";");
+                      "WHERE expenseID = " + this.expenseID + " AND " +
+                      "accountOwes = " + this.accountOwes.getField("accountID") +";");
 
-      while (resultSet.next()) {
-        subExpenses.add(new SubExpense(
-                resultSet.getInt("expenseID"),
-                new Account(resultSet.getInt("accountOwes"), this.connection),
-                this.connection));
-      }
+      resultSet.next();
+      field = resultSet.getString(fieldName);
+
 
     } catch (SQLException e) {
       System.out.println(e.getMessage());
     }
-    return subExpenses;
+    return field;
   }
 
-  public ArrayList<Account> getAccountsOwes() {
-    this.getField("")
-  }
 
   /**
-   * returns the the String version of this Expense.
+   * returns the the String version of this subexpense.
    *
    * @return a String representing this subexpense.
    */
@@ -102,7 +74,5 @@ public class Expense {
     return output;
 
   }
-
-
 
 }
