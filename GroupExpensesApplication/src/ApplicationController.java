@@ -39,9 +39,10 @@ public class ApplicationController {
       System.out.println(e.getMessage());
     }
 
-    for (SubExpense subexpense: new Expense(1, model.getConnection()).getSubExpenses()) {
-      System.out.println(subexpense.toString());
+    for (SubExpense sub : new Expense(2, model.getConnection()).getSubExpenses()) {
+      System.out.println(sub.toString());
     }
+
 
 
   }

@@ -21,10 +21,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Account.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="-139">
               <caret line="156" column="30" selection-start-line="156" selection-start-column="30" selection-end-line="156" selection-end-column="30" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -53,8 +53,8 @@
       <file leaf-file-name="ApplicationController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ApplicationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+            <state relative-caret-position="281">
+              <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,8 +65,8 @@
       <file leaf-file-name="Group.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Group.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+            <state relative-caret-position="1470">
+              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2744#2753#0" expanded="true" />
@@ -75,16 +75,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Expense.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Expense.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Expense.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="59" column="67" selection-start-line="59" selection-start-column="67" selection-end-line="59" selection-end-column="67" />
+            <state relative-caret-position="-769">
+              <caret line="49" column="45" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#674#682#0" expanded="true" />
-                <element signature="e#1946#1947#0" expanded="true" />
-                <element signature="e#1972#1973#0" expanded="true" />
+                <element signature="e#2247#2256#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,8 +92,8 @@
       <file leaf-file-name="SubExpense.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SubExpense.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="75" selection-end-column="3" />
+            <state relative-caret-position="1005">
+              <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,12 +118,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Group.java" />
         <option value="$PROJECT_DIR$/src/ApplicationModel.java" />
         <option value="$PROJECT_DIR$/src/Account.java" />
-        <option value="$PROJECT_DIR$/src/ApplicationController.java" />
         <option value="$PROJECT_DIR$/src/SubExpense.java" />
+        <option value="$PROJECT_DIR$/src/ApplicationController.java" />
         <option value="$PROJECT_DIR$/src/Expense.java" />
+        <option value="$PROJECT_DIR$/src/Group.java" />
       </list>
     </option>
   </component>
@@ -706,6 +705,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Group.java" />
     <entry file="file://$PROJECT_DIR$/src/Expense.java" />
+    <entry file="file://$PROJECT_DIR$/src/ApplicationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ApplicationModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1916">
@@ -717,24 +726,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Account.java">
+    <entry file="file://$PROJECT_DIR$/src/Expense.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="156" column="30" selection-start-line="156" selection-start-column="30" selection-end-line="156" selection-end-column="30" />
+        <state relative-caret-position="-769">
+          <caret line="49" column="45" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#4478#4485#0" expanded="true" />
-            <element signature="e#5370#5371#0" expanded="true" />
-            <element signature="e#5396#5397#0" expanded="true" />
+            <element signature="e#674#682#0" expanded="true" />
+            <element signature="e#2247#2256#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SubExpense.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Group.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+        <state relative-caret-position="1470">
+          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2744#2753#0" expanded="true" />
@@ -742,35 +759,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ApplicationController.java">
+    <entry file="file://$PROJECT_DIR$/src/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        <state relative-caret-position="-139">
+          <caret line="156" column="30" selection-start-line="156" selection-start-column="30" selection-end-line="156" selection-end-column="30" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SubExpense.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="75" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Expense.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="59" column="67" selection-start-line="59" selection-start-column="67" selection-end-line="59" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#674#682#0" expanded="true" />
-            <element signature="e#1946#1947#0" expanded="true" />
-            <element signature="e#1972#1973#0" expanded="true" />
+            <element signature="e#4478#4485#0" expanded="true" />
+            <element signature="e#5370#5371#0" expanded="true" />
+            <element signature="e#5396#5397#0" expanded="true" />
           </folding>
         </state>
       </provider>

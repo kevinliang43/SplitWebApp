@@ -47,7 +47,7 @@ public class Expense {
   /**
    * Returns all subexpenses that make up this expense.
    *
-   * @return
+   * @return an ArrayList of all Subexpenses.
    */
   public ArrayList<SubExpense> getSubExpenses() {
 
@@ -72,8 +72,19 @@ public class Expense {
     return subExpenses;
   }
 
+  /**
+   * retrieves a list of all accounts that owe money for this expense.
+   *
+   * @return an ArrayList of all accounts that owes money.
+   */
   public ArrayList<Account> getAccountsOwes() {
-    this.getField("")
+    ArrayList<String> accountOwes = this.getField("accountOwes");
+    ArrayList<Account> newAccountOwes = new ArrayList<Account>();
+
+    for (String accountID : accountOwes) {
+      newAccountOwes.add(new Account(Integer.valueOf(accountID), this.connection));
+    }
+    return  newAccountOwes;
   }
 
   /**
@@ -83,21 +94,29 @@ public class Expense {
    */
   public String toString() {
 
-    Account accountOwed = new Account(Integer.valueOf(this.getField("accountOwed")), this.connection);
-    Account accountOwes = new Account(Integer.valueOf(this.getField("accountOwes")), this.connection);
+    Account accountOwed = new Account(Integer.valueOf(this.getField("accountOwed").get(0)), this.connection);
+    ArrayList<Account> accountsOwes = this.getAccountsOwes();
 
-    String output = "Expense #" + this.getField("expenseID") +": " + this.getField("name") + "\n";
-    output += "Date: " + this.getField("date") + "\n";
+    String output = "Expense #" + this.getField("expenseID").get(0) +": " + this.getField("name").get(0) + "\n";
+    output += "Date: " + this.getField("date").get(0) + "\n";
     output += "Person Owed: " + accountOwed.getField("firstName") + " " + accountOwed.getField("lastName") + "\n";
-    output += "Person Owes: " + accountOwes.getField("firstName") + " " + accountOwes.getField("lastName") + "\n";
-    output += "Amount : $" + this.getField("amountOwed") + "\n";
-    output += "Status: ";
-    if (Integer.valueOf(this.getField("paid")) == 0) {
-      output += "Not Paid";
+    output += "People that Owe: ";
+
+    for (int i = 0; i < accountsOwes.size(); i++) {
+      Account account = accountsOwes.get(i);
+      if (new SubExpense(this.expenseID, account, this.connection).getField("paid").equals("0")) {
+        output += account.getField("firstName") + " " + account.getField("lastName");
+      }
+      if (i != accountsOwes.size() - 1) {
+        output += ", ";
+      }
     }
-    else {
-      output += "Paid" + "\n";
+    output += "\n";
+    int total = 0;
+    for (String amount : this.getField("amountOwed")) {
+      total += Integer.valueOf(amount);
     }
+    output += "Total Amount : $" + total + "\n";
 
     return output;
 
