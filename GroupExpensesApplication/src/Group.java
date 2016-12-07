@@ -126,5 +126,33 @@ public class Group {
 
   // get all expenses of this group.
 
+  public ArrayList<Expense> getExpenses() {
+    ArrayList<Expense> expenses = new ArrayList<Expense>();
+
+    try {
+      Statement statement = this.connection.createStatement();
+      ResultSet resultSet = statement.executeQuery(
+              "SELECT DISTINCT expenseID FROM expense " +
+                      "WHERE groupID = " + this.groupID +";");
+
+      while (resultSet.next()) {
+        expenses.add(new Expense(resultSet.getInt("expenseID"),
+                this.connection));
+      }
+
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+    }
+    return expenses;
+  }
+
+  // to String
+
+  public String toString() {
+    String output = this.getField("groupName") + " (GroupID: " + this.groupID + ")";
+
+    return output;
+  }
+
 
 }
