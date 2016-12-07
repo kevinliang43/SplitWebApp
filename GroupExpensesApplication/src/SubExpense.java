@@ -68,7 +68,7 @@ public class SubExpense {
       output += "Not Paid";
     }
     else {
-      output += "Paid" + "\n";
+      output += "Paid";
     }
 
     return output;

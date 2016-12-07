@@ -18,6 +18,10 @@ public class Group {
     this.connection = connection;
   }
 
+  public int groupID() {
+      return groupID;
+  }
+  
   /**
    * Gets the row value for the specified field of this group.
    *

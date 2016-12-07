@@ -24,7 +24,11 @@ public class Account {
     this.connection = connection;
   }
 
-
+  
+  public int getAccountID() {
+      return accountID;
+  }
+  
   /**
    * Gets the row value for the specified field of this account.
    *
@@ -233,7 +237,7 @@ public class Account {
   /**
    * Gets the total owed to this account.
    *
-   * @return integer containing the 5 most recent expenses.
+   * @return integer 
    */
   public int totalOwed() {
     int total = 0;
@@ -245,8 +249,8 @@ public class Account {
 
       resultSet.next();
 
-      total = resultSet.getInt("total");
-
+      total = resultSet.getInt(1);
+      
 
     } catch (SQLException e) {
       System.out.println(e.getMessage());
@@ -258,7 +262,7 @@ public class Account {
   /**
    * Gets the total owed by this account.
    *
-   * @return integer containing the 5 most recent expenses.
+   * @return integer 
    */
   public int totalOwes() {
     int total = 0;
@@ -270,7 +274,7 @@ public class Account {
 
       resultSet.next();
 
-      total = resultSet.getInt("total");
+      total = resultSet.getInt(1);
 
 
     } catch (SQLException e) {
@@ -288,7 +292,7 @@ public class Account {
    */
   public void acceptInvite(GroupInvite g) {
     if (!this.getGroupInvites().contains(g)) {
-      throw new IllegalArgumentException("Cannot accept a group invite that does not exist. ");
+        System.out.println("Cannot accept a group invite that does not exist. ");
     }
 
     try {
@@ -304,7 +308,7 @@ public class Account {
 
 
     } catch (SQLException e) {
-      System.out.println(e.getMessage());
+      //System.out.println(e.getMessage());
     }
   }
 
@@ -316,11 +320,11 @@ public class Account {
    */
   public void sendInvite(Group group, Account account) {
     if (Integer.valueOf(group.getField("adminID")) != this.accountID) {
-      throw new IllegalArgumentException("You are not the admin of this Group. ");
+        System.out.println("You are not the admin of this Group. ");
     }
 
     if (account.equals(this)) {
-      throw new IllegalArgumentException("Cannot send an invite to yourself. ");
+        System.out.println("Cannot send an invite to yourself. ");
     }
 
     try {
@@ -331,7 +335,7 @@ public class Account {
 
 
     } catch (SQLException e) {
-      System.out.println(e.getMessage());
+      //System.out.println(e.getMessage());
     }
 
   }
@@ -343,7 +347,7 @@ public class Account {
    */
   public void declineInvite(GroupInvite group) {
     if (!this.getGroupInvites().contains(group)) {
-      throw new IllegalArgumentException("Cannot decline an invite that doesn't exist");
+        System.out.println("Cannot decline an invite that doesn't exist");
     }
 
     try {
@@ -354,7 +358,7 @@ public class Account {
 
 
     } catch (SQLException e) {
-      System.out.println(e.getMessage());
+      //System.out.println(e.getMessage());
     }
 
   }
@@ -439,12 +443,12 @@ public class Account {
   public void deleteExpense(Group group, Expense expense) {
 
     if (!group.getExpenses().contains(expense)) {
-      throw new IllegalArgumentException("Cannot delete an expense that does not exist. ");
+        System.out.println("Cannot delete an expense that does not exist. ");
     }
 
     if (Integer.valueOf(expense.getField("accountOwed").get(0)) !=
     Integer.valueOf(this.getField("accountID"))) {
-      throw new IllegalArgumentException("Cannot delete an expense that is not yours.");
+        System.out.println("Cannot delete an expense that is not yours.");
     }
 
     try {
@@ -474,7 +478,7 @@ public class Account {
 
   public void updateExpense(SubExpense subexpense, int newBool) {
     if (!subexpense.getField("accountOwed").equals(this.getField("accountID"))) {
-      throw new IllegalArgumentException("Cannot update a Sub Expense that is not yours. ");
+        System.out.println("Cannot update a Sub Expense that is not yours. ");
     }
 
     try {

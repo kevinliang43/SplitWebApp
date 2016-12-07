@@ -21,6 +21,7 @@ public class ApplicationModel {
     this.connection = null;
   }
 
+  
   //establish a connection to the database.
   public void getConnection(String username, String password, String database) {
     String connectionURL = "jdbc:mysql://localhost:3306/" + database +
@@ -102,8 +103,51 @@ public class ApplicationModel {
     this.login = new Account(accountID, this.connection);
 
   }
-
-
+  
+  // Sign up
+  public boolean userNameExist(String uname) {
+      Statement statement;
+    try {
+        statement = this.connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(
+                "SELECT username " +
+                        "FROM accounts;");
+        while(resultSet.next()) {
+            if (uname.equals(resultSet.getString("username"))) {
+                return true;
+            }
+        }
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        // e.printStackTrace();
+    }
+      return false;
+  }
+  
+  public boolean accountIDExist(int id) {
+      Statement statement;
+    try {
+        statement = this.connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(
+                "SELECT accountID " +
+                        "FROM accounts;");
+        while(resultSet.next()) {
+            if (Integer.toString(id).equals(resultSet.getString("accountID"))) {
+                return true;
+            }
+        }
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        // e.printStackTrace();
+    }
+      return false;
+  }
+  
+  // log out
+  public void logout() {
+      login = null;
+  }
+  
   /**
    * returns a list of all table names in this database.
    *
@@ -417,7 +461,6 @@ public class ApplicationModel {
   public Connection getConnection() {
     return connection;
   }
-
 
 
 }

@@ -16,6 +16,10 @@ public class Expense {
     this.expenseID = expenseID;
     this.connection = connection;
   }
+  
+  public int getExpenseID() {
+      return expenseID;
+  }
 
   /**
    * Gets the row value for the specified field of this expense.
@@ -113,9 +117,18 @@ public class Expense {
     }
     output += "\n";
     int total = 0;
-    for (String amount : this.getField("amountOwed")) {
-      total += Integer.valueOf(amount);
+//    for (String amount : this.getField("amountOwed")) {
+//      total += Integer.valueOf(amount);
+//    }
+    
+    for (SubExpense sub : this.getSubExpenses()) {
+        if (sub.getField("paid").equals("0")) {
+            total += Integer.valueOf(sub.getField("amountOwed"));
+        }
     }
+    
+    
+    
     output += "Total Amount : $" + total + "\n";
 
     return output;
